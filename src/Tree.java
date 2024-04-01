@@ -1,23 +1,39 @@
+/**
+ * Класс, представляющий структуру красно-чёрного дерева.
+ */
 public class Tree {
     Node root;
 
+    /**
+     * Класс, представляющий узел красно-чёрного дерева.
+     */
     class Node{
         int value;
         Node left;
         Node right;
         Color color;
 
+        /**
+         * Создает новый узел с заданным значением.
+         * @param value значение узла
+         */
         Node(int value) {
             this.value = value;
             this.color = Color.RED; // Новые узлы всегда красные
         }
     }
-
+    /**
+     * Перечисление цветов узлов красно-чёрного дерева.
+     */
     enum Color{
         BLACK,
         RED
     }
 
+    /**
+     * Вставляет новый элемент в красно-чёрное дерево.
+     * @param value значение для вставки
+     */
     public void insert(int value){
         if(root != null) {
             root = insert(root, value);
@@ -28,6 +44,12 @@ public class Tree {
         }
     }
 
+    /**
+     * Вспомогательный метод для вставки элемента в поддерево с корнем node.
+     * @param node корень поддерева
+     * @param value значение для вставки
+     * @return корень поддерева после вставки
+     */
     private Node insert(Node node, int value){
         if(node == null)
             return new Node(value);
@@ -54,7 +76,11 @@ public class Tree {
 
         return node;
     }
-
+    /**
+     * Проверяет, является ли узел красным.
+     * @param node узел для проверки
+     * @return true, если узел красный, в противном случае - false
+     */
     private boolean isRed(Node node) {
         return node != null && node.color == Color.RED;
     }
