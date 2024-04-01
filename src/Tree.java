@@ -12,7 +12,6 @@ public class Tree {
         Node left;
         Node right;
         Color color;
-
         /**
          * Создает новый узел с заданным значением.
          * @param value значение узла
